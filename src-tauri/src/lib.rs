@@ -197,9 +197,14 @@ async fn download_video(
     let template = target_dir.join("%(title)s.%(ext)s");
     let template_str = template.to_string_lossy().to_string();
 
-    // Resolve the resource path for ffmpeg.exe
-    // We assume it's in the resource directory under "binaries/ffmpeg.exe"
-    let resource_path = app.path().resolve("binaries/ffmpeg.exe", tauri::path::BaseDirectory::Resource)
+    // Resolve the resource path for ffmpeg.exe or ffmpeg (linux)
+    let binary_name = if cfg!(windows) {
+        "binaries/ffmpeg.exe"
+    } else {
+        "binaries/ffmpeg"
+    };
+
+    let resource_path = app.path().resolve(binary_name, tauri::path::BaseDirectory::Resource)
         .map_err(|e| e.to_string())?;
     
     let ffmpeg_location = resource_path.to_string_lossy().to_string();
