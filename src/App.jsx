@@ -270,20 +270,23 @@ function App() {
 
   return (
     <>
-      <div className="logo-card" onClick={handleLogoClick}>
-        <div className="logo-card-bg"></div>
-        <div className="logo-card-outline"></div>
-        <div className="logo-card-blob"></div>
-        <img
-          src={heepLogoLight}
-          className={`card-logo-image ${theme === 'light' ? 'active' : 'inactive'}`}
-          alt="Heep Logo"
-        />
-        <img
-          src={heepLogoDark}
-          className={`card-logo-image ${theme === 'dark' ? 'active' : 'inactive'}`}
-          alt="Heep Logo"
-        />
+      <div className="logo-wrapper">
+        <div className="logo-card" onClick={handleLogoClick}>
+          <div className="logo-card-bg"></div>
+          <div className="logo-card-outline"></div>
+          <div className="logo-card-blob"></div>
+          <img
+            src={heepLogoLight}
+            className={`card-logo-image ${theme === 'light' ? 'active' : 'inactive'}`}
+            alt="Heep Logo"
+          />
+          <img
+            src={heepLogoDark}
+            className={`card-logo-image ${theme === 'dark' ? 'active' : 'inactive'}`}
+            alt="Heep Logo"
+          />
+        </div>
+        <div className="logo-tooltip">For Batbay's</div>
       </div>
       <SearchSection
         resetTrigger={resetKey}
