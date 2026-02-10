@@ -104,8 +104,8 @@ body.dark-mode {
 .logo-tooltip {
   margin-top: 12px;
   padding: 6px 10px;
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   border-radius: 4px;
   font-size: 0.85rem;
   font-weight: 500;
@@ -115,7 +115,6 @@ body.dark-mode {
   pointer-events: none;
   white-space: nowrap;
   position: relative;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .logo-tooltip::after {
@@ -126,6 +125,10 @@ body.dark-mode {
   transform: translateX(-50%);
   border-width: 0 5px 5px 5px;
   border-style: solid;
+  border-color: transparent transparent #fff transparent;
+}
+
+body.dark-mode .logo-tooltip::after {
   border-color: transparent transparent #000 transparent;
 }
 
