@@ -36,9 +36,19 @@ function App() {
 
   useEffect(() => {
     videosRef.current = videos;
-    document.body.className = theme === 'light' ? 'light-mode' : 'dark-mode';
+    // Use classList instead of overwriting className to preserve other classes (like theme-transition)
+    document.body.classList.remove('light-mode', 'dark-mode');
+    document.body.classList.add(theme === 'light' ? 'light-mode' : 'dark-mode');
     localStorage.setItem('theme', theme);
   }, [theme, videos]);
+
+  // Enable transitions after initial load to prevent flash
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      document.body.classList.add('theme-transition');
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('format', format);
